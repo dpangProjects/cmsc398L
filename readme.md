@@ -4,9 +4,9 @@ Dalton Pang
 ## Problem - kSum
 Given an array nums of $n$ integers, return an array of all the unique combinations of $k$ numbers such that:
 
-- $0 \le a_i < n$ for $0\le i < k$  where $a_i$ number in the combination
-- all $a_i$ are distinct
-- $a_0 + a_1 + ... + a_{k-1}$ == target
+- $0\le i < k$ for $a_i$,  where $a_i$ is the $ith$ number in the array
+- all $i$ are distinct in the combination
+- the sum of the combination of $a_i$'s is equal to the target
 - The answer can be in any order
 
 ## What I Like About This Problem
@@ -57,3 +57,22 @@ def solution(k,nums,target):
     kSum(k,0,target)
     return res
 ```
+
+Examples
+```python
+#2Sum, nums = [2,7,11,15], target = 9
+solution(2,[2,7,11,15],9) == [[2,7]]
+
+#3Sum, nums = [-1,0,1,2,-1,-4], 0
+solution(3,[-1,0,1,2,-1,-4],0) == [[-1,-1,2],[-1,0,1]]
+
+#4Sum, nums = [1,0,-1,0,-2,2], target = 0
+solution(4,[1,0,-1,0,-2,2],0) == [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+```
+## Time and Space Complexity
+
+### Time Complexity
+$O(n^{k-1})$ where n is the number of numbers in the input array and k is the kSum. The higher the k value the more loops we do in our algorithm.
+
+### Space Complexity 
+$O(n)$ where n is the number of numbers in the input array. We need at least $O(k)$ space to keep track of the current combination we are looking at in our recursion. $k$ can be equal to n in the worst case.
